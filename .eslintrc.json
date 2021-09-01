@@ -1,19 +1,74 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "**/*"
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "project": "./tsconfig.*?.json"
+  },
+  "plugins": ["@nrwl/nx", "simple-import-sort", "unused-imports"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:@nrwl/nx/angular",
+    "plugin:@angular-eslint/template/process-inline-templates"
   ],
-  "plugins": [
-    "@nrwl/nx"
-  ],
+  "rules": {
+    "no-invalid-this": 0,
+    "valid-jsdoc": 0,
+    "max-len": [
+      "error",
+      {
+        "code": 120
+      }
+    ],
+    "require-jsdoc": 0,
+    "new-cap": [
+      2,
+      {
+        "capIsNewExceptions": [
+          "Directive",
+          "Component",
+          "Pipe",
+          "NgModule",
+          "Injectable",
+          "Input",
+          "Output",
+          "Controller",
+          "Get",
+          "Module",
+          "Inject",
+          "Query",
+          "Post",
+          "Header",
+          "Body",
+          "ViewChild",
+          "ContentChildren",
+          "HostBinding",
+          "ViewChildren",
+          "HostListener",
+          "UntilDestroy",
+          "Optional"
+        ]
+      }
+    ],
+    "@typescript-eslint/explicit-member-accessibility": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-parameter-properties": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+		"unused-imports/no-unused-imports": "error",
+		"unused-imports/no-unused-vars": [
+			"warn",
+			{ "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
+		]
+  },
   "overrides": [
     {
-      "files": [
-        "*.ts",
-        "*.tsx",
-        "*.js",
-        "*.jsx"
-      ],
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
         "@nrwl/nx/enforce-module-boundaries": [
           "error",
@@ -33,24 +88,44 @@
       }
     },
     {
-      "files": [
-        "*.ts",
-        "*.tsx"
-      ],
-      "extends": [
-        "plugin:@nrwl/nx/typescript"
-      ],
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@nrwl/nx/typescript"],
       "rules": {}
     },
     {
-      "files": [
-        "*.js",
-        "*.jsx"
-      ],
-      "extends": [
-        "plugin:@nrwl/nx/javascript"
-      ],
+      "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nrwl/nx/javascript"],
       "rules": {}
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": "off"
+      },
+      "extends": ["plugin:@nrwl/nx/typescript"]
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nrwl/nx/javascript"],
+      "rules": {}
+    },
+    {
+      // Imports to the top and add a blank line after them.
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "plugins": ["import"],
+      "rules": {
+        "import/first": "error",
+        "import/newline-after-import": "error"
+      }
+    },
+    {
+      // Exceptions for simple-import-sort
+      "files": ["*.html"],
+      "rules": {
+        "simple-import-sort/imports": "off",
+        "simple-import-sort/exports": "off"
+      }
     }
-  ]
+  ],
+  "ignorePatterns": ["**/*"]
 }

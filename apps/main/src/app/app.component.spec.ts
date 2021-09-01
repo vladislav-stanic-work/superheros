@@ -1,9 +1,19 @@
 import { TestBed } from '@angular/core/testing';
+import { MATERIAL_SANITY_CHECKS } from '@angular/material/core';
+import { UiLibraryModule } from '@superheros/ui-library';
+
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [UiLibraryModule],
+      providers: [
+        {
+          provide: MATERIAL_SANITY_CHECKS,
+          useValue: false,
+        },
+      ],
       declarations: [AppComponent],
     }).compileComponents();
   });
@@ -25,7 +35,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Welcome to main!'
+      'Welcome to superheroes!'
     );
   });
 });
