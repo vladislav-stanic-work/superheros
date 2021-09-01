@@ -111,7 +111,7 @@
           "options": {
             "cypressConfig": "apps/main-e2e/cypress.json",
             "devServerTarget": "main:serve:development",
-            "tsConfig": "apps/main-e2e/tsconfig.json"
+            "tsConfig": "apps/main-e2e/tsconfig.e2e.json"
           },
           "configurations": {
             "production": {
