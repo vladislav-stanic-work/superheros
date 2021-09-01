@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'superheros-root',
+  selector: 'sup-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
