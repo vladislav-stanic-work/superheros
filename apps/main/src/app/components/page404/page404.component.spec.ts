@@ -1,4 +1,6 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { UiLibraryModule } from '@superheros/ui-library';
 
 import { Page404Component } from './page404.component';
 
@@ -8,9 +10,10 @@ describe('Page404Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ Page404Component ]
-    })
-    .compileComponents();
+      declarations: [Page404Component],
+      providers: [UiLibraryModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    }).compileComponents();
   });
 
   beforeEach(() => {
