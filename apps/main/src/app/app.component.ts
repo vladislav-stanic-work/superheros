@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { NavItem } from '@superheros/util-library';
+
+import { HEADER_NAV } from './models';
 
 @Component({
   selector: 'sup-root',
@@ -6,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'main';
+  navItems: NavItem[] = HEADER_NAV;
 }

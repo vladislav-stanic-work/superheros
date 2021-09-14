@@ -2,17 +2,17 @@
   <div class="container">
     <div class="flex space-between">
       <div>
-        <button
-          mat-icon-button
-          class="example-icon"
-          aria-label="Example icon-button with menu icon"
-        >
-          <mat-icon>menu</mat-icon>
-        </button>
-        <span>My App</span>
+        <span>Logo</span>
       </div>
-      <div class="flex">
-        <a [href]="item.url" *ngFor="let item of navItems">{{item.name}}</a>
+      <div class="flex nav-links">
+        <div *ngFor="let item of navItems" class="nav-link">
+          <a
+            [routerLink]="item.url"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >{{item.name}}</a
+          >
+        </div>
       </div>
     </div>
   </div>

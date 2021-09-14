@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavItem } from '@superheros/util-library';
 
 @Component({
@@ -7,18 +7,5 @@ import { NavItem } from '@superheros/util-library';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  navItems: NavItem[] = [
-    {
-      name: 'One',
-      url: '',
-    },
-    {
-      name: 'Two',
-      url: '',
-    },
-    {
-      name: 'Three',
-      url: '',
-    },
-  ];
+  @Input() navItems: NavItem[] = [];
 }

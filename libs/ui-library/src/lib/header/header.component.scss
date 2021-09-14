@@ -1,0 +1,12 @@
+.nav-link {
+  margin-left: 10px;
+
+  a {
+    color: #fff;
+
+    &:hover,
+    &.active {
+      color: violet;
+    }
+  }
+}
